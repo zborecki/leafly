@@ -1,0 +1,5 @@
+@custom-variant light {
+  &:where([data-theme="light"] *) {
+    @slot;
+  }
+}

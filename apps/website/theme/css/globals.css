@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@heroui/styles"; 
+
+@import './themes/light.css' layer(theme);
+@import './utils/variants.css';
+@import './utils/typography.css';
+
+:root {
+  --color-common-black: oklch(0% 0 0);
+  --color-common-white: oklab(100% 0 -0.00011);
+
+  --line-height-120: 120%;
+  --line-height-130: 130%;
+  --line-height-140: 140%;
+}
+
+@theme {
+  --color-black: var(--color-common-black);
+  --color-white: var(--color-common-white);
+
+  --color-gray: var(--color-gray-500);
+  --color-gray-100: var(--color-gray-100);
+  --color-gray-500: var(--color-gray-500);
+  
+  --color-primary: var(--color-primary-500);
+  --color-primary-500: var(--color-primary-500);
+
+  --leading-120: var(--line-height-120);
+  --leading-130: var(--line-height-130);
+  --leading-140: var(--line-height-140);
+}
+
+body {
+  font-family: var(--poppins-font);
+}

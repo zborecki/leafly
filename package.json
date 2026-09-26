@@ -1,0 +1,17 @@
+{
+  "name": "@leafly",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "website:dev": "bun run --filter @leafly/website dev",
+    "website:build": "bun run --filter @leafly/website build",
+    "website:lint": "bun run --filter @leafly/website lint"
+  },
+  "engines": {
+    "node": ">=22.18.0",
+    "bun": ">=1.2.22"
+  },
+  "packageManager": "bun@1.2.22"
+}

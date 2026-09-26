@@ -1,0 +1,6 @@
+[data-theme="light"] {
+  --color-gray-100: oklab(92.494% 0 -0.00011);
+  --color-gray-500: oklab(59.987% 0 -0.00007);
+
+  --color-primary-500: oklch(54.485% 0.26654 309.046);
+}

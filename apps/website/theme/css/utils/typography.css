@@ -1,0 +1,8 @@
+@utility typo-body-medium {
+  @apply text-base leading-140;
+}
+
+
+@utility typo-body-tiny {
+  @apply text-xs leading-130;
+}
