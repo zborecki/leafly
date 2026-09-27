@@ -21,9 +21,12 @@
   --color-gray: var(--color-gray-500);
   --color-gray-100: var(--color-gray-100);
   --color-gray-500: var(--color-gray-500);
+  --color-gray-600: var(--color-gray-600);
   
   --color-primary: var(--color-primary-500);
   --color-primary-500: var(--color-primary-500);
+
+  --container-8xl: 82.5rem;
 
   --leading-120: var(--line-height-120);
   --leading-130: var(--line-height-130);

@@ -8,7 +8,8 @@ export const textVariants = tv({
   },
   variants: {
     color: {
-      default: 'text-gray'
+      default: 'text-gray',
+      inherit: 'text-[inherit]'
     },
     size: {
       body: 'typo-body-medium',

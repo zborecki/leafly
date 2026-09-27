@@ -5,9 +5,9 @@
     "apps/*"
   ],
   "scripts": {
-    "website:dev": "bun run --filter @leafly/website dev",
-    "website:build": "bun run --filter @leafly/website build",
-    "website:lint": "bun run --filter @leafly/website lint"
+    "web:dev": "bun run --filter @leafly/website dev",
+    "web:build": "bun run --filter @leafly/website build",
+    "web:lint": "bun run --filter @leafly/website lint"
   },
   "engines": {
     "node": ">=22.18.0",

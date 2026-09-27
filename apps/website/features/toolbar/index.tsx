@@ -1,4 +1,8 @@
+import { MapPinIcon } from 'lucide-react';
+
 import Paper from '@/components/shared/paper';
+import Wrapper from '@/components/shared/wrapper';
+import TextWithIcon from '@/components/text-with-icon';
 
 const Toolbar = () => {
   const x = 0;
@@ -9,7 +13,12 @@ const Toolbar = () => {
       className='py-3'
       variant='outlined'
     >
-      Toolbar
+      <Wrapper className='max-w-8xl'>
+        <TextWithIcon
+          label='common.hello_world'
+          leftIcon={<MapPinIcon />}
+        />
+      </Wrapper>
     </Paper>
   );
 };
