@@ -1,43 +1,19 @@
-import type {
-  NextHttpClientOptions,
-  NextOptions
-} from './types';
+import { HttpClient, type InternalRequestConfig } from '@/shared/http-client/core/client';
+import type { INextIHttpClientOptions, INextOptions, INextRequestConfig } from '@/shared/http-client/nextjs/types';
 
-import {
-  HttpClient,
-  type InternalRequestConfig
-} from '../core/client';
+type NextFetchOptions = RequestInit & { next?: INextOptions; };
 
-type NextFetchOptions =
-  RequestInit & {
-    next?: NextOptions;
-  };
+export class NextHttpClient<TEndpoint extends string> extends HttpClient<TEndpoint, INextRequestConfig> {
+  private readonly nextOptions?: INextOptions;
 
-export class NextHttpClient<
-  TEndpoint extends string,
-> extends HttpClient<TEndpoint> {
-  private readonly nextOptions?: NextOptions;
-
-  constructor(
-    options: NextHttpClientOptions
-  ) {
+  constructor(options: INextIHttpClientOptions) {
     super(options);
-
-    this.nextOptions =
-      options.next;
+    this.nextOptions = options.next;
   }
 
-  protected override createFetchOptions(
-    config: InternalRequestConfig,
-    headers: Headers,
-    body?: BodyInit
-  ): NextFetchOptions {
-    const next =
-      this.nextOptions
-        ? {
-          ...this.nextOptions
-        }
-        : undefined;
+  protected override createFetchOptions(config: InternalRequestConfig, headers: Headers, body?: BodyInit): NextFetchOptions {
+    const nextConfig = config as InternalRequestConfig & INextRequestConfig;
+    const next = nextConfig.next ?? this.nextOptions;
 
     return {
       ...super.createFetchOptions(
@@ -45,10 +21,7 @@ export class NextHttpClient<
         headers,
         body
       ),
-
-      ...(next
-        ? { next }
-        : {})
+      ...(next ? { next } : {})
     };
   }
 }

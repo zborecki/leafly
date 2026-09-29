@@ -1,4 +1,4 @@
-import type { BaseRequestConfig } from '@/shared/http-client/core/types';
+import type { IBaseRequestConfig } from '@/shared/http-client/core/types';
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   if (typeof value !== 'object' || value === null) return false;
@@ -8,7 +8,7 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
   return (prototype === Object.prototype || prototype === null);
 }
 
-export function createBody(body: BaseRequestConfig['body'], headers: Headers, json: boolean): BodyInit | undefined {
+export function createBody(body: IBaseRequestConfig['body'], headers: Headers, json: boolean): BodyInit | undefined {
   if (body === undefined || body === null) return undefined;
 
   /**

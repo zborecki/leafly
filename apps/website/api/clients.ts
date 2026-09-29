@@ -1,11 +1,6 @@
-import { Endpoint } from './endpoints';
-
-import { NextHttpClient } from '@/shared/http-client/nextjs/client';
+import { Endpoint } from '@/api/endpoints';
+import { NextHttpClient } from '@/shared/http-client';
 
 export const apiClient = new NextHttpClient<Endpoint>({
   baseUrl: '/'
-});
-
-const x = apiClient.get('api/v1/settings', {
-
 });

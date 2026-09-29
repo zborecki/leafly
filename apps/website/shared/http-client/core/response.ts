@@ -1,9 +1,6 @@
 import type { ResponseType } from '@/shared/http-client/core/types';
 
 export async function parseResponse<T>(response: Response, responseType: ResponseType): Promise<T> {
-  /**
-   * Responses without a body.
-   */
   if (response.status === 204 || response.status === 205) return undefined as T;
 
   switch (responseType) {

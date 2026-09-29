@@ -1,4 +1,4 @@
-import type { BaseRequestConfig, ParamValue } from '@/shared/http-client/core/types';
+import type { IBaseRequestConfig, ParamValue } from '@/shared/http-client/core/types';
 
 /**
  * Extract parameter names from an endpoint.
@@ -42,9 +42,11 @@ export type ParamsFor<T extends string> = [ExtractParamNames<T>] extends [never]
  * extracted parameters.
  */
 export type RequestConfig<
-  TEndpoint extends string,
-> = [ExtractParamNames<TEndpoint>] extends [never]
-  ? BaseRequestConfig
-  : BaseRequestConfig & {
-    params: ParamsFor<TEndpoint>;
+  TPath extends string,
+  TExtra extends object = Record<string, never>,
+> = [ExtractParamNames<TPath>] extends [never]
+  ? IBaseRequestConfig & TExtra
+  : IBaseRequestConfig &
+  TExtra & {
+    params: ParamsFor<TPath>;
   };

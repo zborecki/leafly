@@ -1,19 +1,14 @@
-import type {
-  BaseRequestConfig,
-  HttpClientOptions
-} from '../core/types';
+import type { IHttpClientOptions } from '@/shared/http-client/core/types';
 
-export interface NextOptions {
+export interface INextOptions {
   revalidate?: number | false;
   tags?: string[];
 }
 
-export interface NextHttpClientOptions
-  extends HttpClientOptions {
-  next?: NextOptions;
+export interface INextIHttpClientOptions extends IHttpClientOptions {
+  next?: INextOptions;
 }
 
-export interface NextRequestConfig
-  extends BaseRequestConfig {
-  next?: NextOptions;
+export interface INextRequestConfig {
+  next?: INextOptions;
 }

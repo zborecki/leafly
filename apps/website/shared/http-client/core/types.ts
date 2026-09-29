@@ -1,8 +1,25 @@
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+export type HttpMethod =
+  | 'GET'
+  | 'POST'
+  | 'PUT'
+  | 'PATCH'
+  | 'DELETE'
+  ;
 
-export type ResponseType = 'json' | 'text' | 'blob' | 'arrayBuffer' | 'formData';
+export type ResponseType =
+  | 'json'
+  | 'text'
+  | 'blob'
+  | 'arrayBuffer'
+  | 'formData';
 
-export type Primitive = string | number | boolean | null | undefined;
+export type Primitive =
+  | string
+  | number
+  | boolean
+  | bigint
+  | null
+  | undefined;
 
 export type ParamValue = Primitive | Date;
 
@@ -12,32 +29,15 @@ export type SearchParams = Record<string, SearchParamValue>;
 
 export type FilterParams = Record<string, SearchParamValue>;
 
-export interface HttpClientOptions {
+export interface IHttpClientOptions {
   baseUrl: string;
   headers?: HeadersInit;
   responseType?: ResponseType;
-
-  /**
-   * Automatically serialize plain objects to JSON.
-   */
   json?: boolean;
 }
 
-export interface BaseRequestConfig {
-  /**
-   * Query string parameters.
-   *
-   * Example:
-   * ?page=1&search=test
-   */
+export interface IBaseRequestConfig {
   searchParams?: SearchParams;
-
-  /**
-   * Filter query parameters.
-   *
-   * Example:
-   * ?filter[status]=active
-   */
   filterParams?: FilterParams;
   headers?: HeadersInit;
   body?: BodyInit | object | null;
@@ -51,9 +51,23 @@ export interface BaseRequestConfig {
   referrerPolicy?: ReferrerPolicy;
   integrity?: string;
   keepalive?: boolean;
-
-  /**
-   * Additional options passed directly to fetch().
-   */
-  fetchOptions?: Omit<RequestInit, 'method' | 'headers' | 'body' | 'signal'>;
 }
+
+export type ExtractParamNames<T extends string> = T extends `${string}:${infer Param}/${infer Rest}`
+  ? Param | ExtractParamNames<`/${Rest}`> : T extends `${string}:${infer Param}` ? Param : never;
+
+export type ParamsFor<T extends string> = [ExtractParamNames<T>] extends [never]
+  ? never
+  : {
+    [K in ExtractParamNames<T>]:
+    ParamValue;
+  };
+
+export type RequestConfig<
+  TPath extends string,
+  TExtra extends object = Record<string, never>,
+> = [ExtractParamNames<TPath>] extends [never]
+  ? IBaseRequestConfig & TExtra
+  : IBaseRequestConfig & TExtra & {
+    params: ParamsFor<TPath>;
+  };
