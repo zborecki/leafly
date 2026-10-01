@@ -7,7 +7,7 @@ import { buildUrl } from '@/shared/http-client/core/url';
 export type InternalRequestConfig = IBaseRequestConfig & { method: HttpMethod; };
 
 export class HttpClient<TEndpoint extends string, TExtra extends object = Record<string, never>> {
-  protected readonly baseUrl: string;
+  protected readonly baseUrl?: string;
   protected readonly defaultHeaders: Headers;
   protected readonly responseType: ResponseType;
   protected readonly json: boolean;
@@ -37,7 +37,11 @@ export class HttpClient<TEndpoint extends string, TExtra extends object = Record
   }
 
   protected async execute<TResponse>(endpoint: string, config: InternalRequestConfig): Promise<TResponse> {
-    const url = buildUrl(this.baseUrl, endpoint, config);
+    if (!this.baseUrl) {
+      throw new Error('Base URL is not configured.');
+    }
+
+    const url = buildUrl(endpoint, config, this.baseUrl);
     const headers = new Headers(this.defaultHeaders);
 
     if (config.headers) {
@@ -60,7 +64,7 @@ export class HttpClient<TEndpoint extends string, TExtra extends object = Record
     return this.execute<TResponse>(endpoint, { ...(config ?? {}), method: 'GET' });
   }
 
-  get<TPath extends TEndpoint, TResponse = unknown>(endpoint: TPath, config?: RequestConfig<TPath, TExtra>): Promise<TResponse> {
+  get<TResponse = unknown>(endpoint: TEndpoint, config?: RequestConfig<TEndpoint, TExtra>): Promise<TResponse> {
     return this.execute<TResponse>(endpoint, { ...(config ?? {}), method: 'GET' });
   }
 

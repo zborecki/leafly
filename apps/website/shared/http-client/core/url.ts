@@ -58,8 +58,8 @@ function appendFilterParams(searchParams: URLSearchParams, filterParams: FilterP
   }
 }
 
-export function buildUrl(baseUrl: string, endpoint: string, config: IBuildUrlConfig): string {
-  let url = `${baseUrl}${endpoint}`;
+export function buildUrl(endpoint: string, config: IBuildUrlConfig, baseUrl?: string): string {
+  let url = `${baseUrl}/${endpoint}`;
 
   if (config.params) {
     url = url.replace(/:([A-Za-z0-9_]+)/g, (_, key: string) => {

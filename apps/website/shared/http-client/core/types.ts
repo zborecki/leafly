@@ -30,7 +30,7 @@ export type SearchParams = Record<string, SearchParamValue>;
 export type FilterParams = Record<string, SearchParamValue>;
 
 export interface IHttpClientOptions {
-  baseUrl: string;
+  baseUrl?: string;
   headers?: HeadersInit;
   responseType?: ResponseType;
   json?: boolean;

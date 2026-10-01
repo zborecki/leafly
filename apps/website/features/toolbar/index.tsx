@@ -1,11 +1,14 @@
 import { MapPinIcon } from 'lucide-react';
 
+import { getSettings } from '@/api/routes/settings';
 import Paper from '@/components/shared/paper';
 import Wrapper from '@/components/shared/wrapper';
 import TextWithIcon from '@/components/text-with-icon';
 
-const Toolbar = () => {
-  const x = 0;
+const Toolbar = async () => {
+  const settings = await getSettings();
+
+  console.log(settings);
 
   return (
     <Paper
