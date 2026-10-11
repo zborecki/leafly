@@ -5,12 +5,11 @@ import Paper from '@/components/shared/paper';
 import Wrapper from '@/components/shared/wrapper';
 import TextWithIcon from '@/components/text-with-icon';
 import { formatLocation } from '@/utils/formatLocation';
-import { mergeValues } from '@/utils/mergeValues';
 
 const Toolbar = async () => {
-  const { company } = await getSettings();
+  const { location } = await getSettings();
 
-  const location: string = formatLocation(company.location);
+  const formattedLocation = formatLocation(location);
 
   return (
     <Paper
@@ -19,10 +18,14 @@ const Toolbar = async () => {
       variant='outlined'
     >
       <Wrapper className='max-w-8xl'>
-        <TextWithIcon
-          label={location}
-          leftIcon={<MapPinIcon />}
-        />
+        {
+          formattedLocation && (
+            <TextWithIcon
+              label={formattedLocation}
+              leftIcon={<MapPinIcon />}
+            />
+          )
+        }
       </Wrapper>
     </Paper>
   );

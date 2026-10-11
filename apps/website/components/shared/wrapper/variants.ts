@@ -1,6 +1,7 @@
 import { tv, VariantProps } from '@heroui/styles';
 
 export const wrapperVariants = tv({
+  base: 'box-content',
   defaultVariants: {
     centered: true,
     maxWidth: 'default',

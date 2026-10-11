@@ -10,9 +10,7 @@ export const getSettings = async (): Promise<SettingsAPI> => {
     console.error(error);
 
     return ({
-      company: {
-        location: null
-      }
+      location: null
     });
   }
 };

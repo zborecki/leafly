@@ -5,13 +5,14 @@ import { SettingsResponseAPI } from '@/types/api/settings';
 export async function GET(): Promise<NextResponse<SettingsResponseAPI>> {
   const response: SettingsResponseAPI = {
     data: {
-      company: {
-        location: {
-          city: 'New York',
-          country: 'United States',
-          postalCode: '10007',
-          street: '260 Broadway'
-        }
+      location: {
+        street: 'Test',
+        buildingNumber: '344',
+        apartmentNumber: null,
+        postalCode: '60025',
+        city: 'Lincoln',
+        administrativeArea: null,
+        country: 'USA'
       }
     }
   };
