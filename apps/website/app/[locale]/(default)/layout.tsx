@@ -6,7 +6,7 @@ import Toolbar from '@/features/toolbar';
 const DefaultLayout = ({ children }: PropsWithChildren) => (
   <>
     <Toolbar />
-    <Logo />
+    <Logo as='h1' enableHref />
     {children}
   </>
 );

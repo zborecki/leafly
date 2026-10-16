@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata | undefined> {
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--poppins-font',
-  weight: ['400']
+  weight: ['400', '500']
 });
 
 const RootLayout = async ({ children }: PropsWithChildren) => {

@@ -3,5 +3,6 @@
   --color-gray-500: oklab(59.987% 0 -0.00007);
   --color-gray-600: oklab(51.028% 0 -0.00006);
 
-  --color-primary-500: oklch(54.485% 0.26654 309.046);
+  --color-primary-500: oklab(56.725% -0.04767 0.03261);
+  --color-primary-900: oklch(23.325% 0.07505 144.259);
 }

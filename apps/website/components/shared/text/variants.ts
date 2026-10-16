@@ -13,9 +13,11 @@ export const textVariants = tv({
     },
     size: {
       body: 'typo-body-medium',
-      bodyTiny: 'typo-body-tiny'
+      bodyTiny: 'typo-body-tiny',
+      logo: 'typo-logo'
     },
     weight: {
+      medium: 'font-medium',
       regular: 'font-normal'
     }
   }
