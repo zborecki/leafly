@@ -17,7 +17,7 @@ const Toolbar = async () => {
       className='py-3'
       variant='outlined'
     >
-      <Wrapper className='max-w-8xl'>
+      <Wrapper>
         {
           formattedLocation && (
             <TextWithIcon

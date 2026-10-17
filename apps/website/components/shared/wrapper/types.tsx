@@ -1,9 +1,9 @@
 import { WrapperVariantsProps } from '@/components/shared/wrapper/variants';
-import { IBaseProps, IChildrenProps } from '@/types/props/common';
+import { IBaseProps, ChildrenProps } from '@/types/props/common';
 
 type WrapperComponentType = 'div' | 'main' | 'section';
 
 export interface IWrapperProps
-  extends IBaseProps, IChildrenProps, WrapperVariantsProps {
+  extends IBaseProps, ChildrenProps, WrapperVariantsProps {
   as?: WrapperComponentType
 }

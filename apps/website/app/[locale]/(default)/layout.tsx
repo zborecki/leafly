@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
 
-import Logo from '@/components/shared/logo';
 import Toolbar from '@/features/toolbar';
+import DefaultHeader from '@/layouts/default/header';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => (
   <>
     <Toolbar />
-    <Logo as='h1' enableHref />
+    <DefaultHeader />
     {children}
   </>
 );

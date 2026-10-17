@@ -4,6 +4,6 @@ export interface IBaseProps {
   className?: string;
 }
 
-export interface IChildrenProps<T extends 'optional' | 'required' = 'required'> {
-  children: T extends 'required' ? Children : Children | undefined;
-}
+export type ChildrenProps<T extends 'optional' | 'required' = 'required'> = T extends 'required'
+  ? { children: Children }
+  : { children?: Children };
